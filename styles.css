@@ -1,25 +1,63 @@
-function generateQRCode() {
-  const url = document.getElementById('url').value;
-  if (!url) {
-    alert('Please enter a URL');
-    return;
-  }
+body {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1a1a1a;
+  margin: 0;
+  color: #fff;
+}
 
-  const qrcodeContainer = document.getElementById('qrcode');
-  qrcodeContainer.innerHTML = ''; // Clear previous QR code
+.container {
+  text-align: center;
+  background-color: #2a2a2a;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
 
-  const qrcode = new QRCode(qrcodeContainer, {
-    text: url,
-    width: 128,
-    height: 128,
-  });
+h1 {
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: #00ffcc;
+}
 
-  // Generate the QR code and create a download link
-  qrcode.makeCode(url);
-  setTimeout(() => {
-    const qrCanvas = qrcodeContainer.querySelector('canvas');
-    const qrDataUrl = qrCanvas.toDataURL('image/png');
-    const downloadLink = document.getElementById('download');
-    downloadLink.href = qrDataUrl;
-  }, 100);
+input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #00ffcc;
+  border-radius: 10px;
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #00ffcc;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #00cc99;
+}
+
+#qrcode {
+  margin-top: 20px;
+}
+
+a#download {
+  display: block;
+  margin-top: 10px;
+  color: #00ffcc;
+  text-decoration: none;
+}
+
+a#download:hover {
+  text-decoration: underline;
 }

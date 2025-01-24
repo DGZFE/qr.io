@@ -21,5 +21,6 @@ function generateQRCode() {
     const qrDataUrl = qrCanvas.toDataURL('image/png');
     const downloadLink = document.getElementById('download');
     downloadLink.href = qrDataUrl;
+    downloadLink.style.display = 'block'; // Show the download link
   }, 100);
 }
